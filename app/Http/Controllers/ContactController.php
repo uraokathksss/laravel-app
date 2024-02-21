@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ContactFormRequest;
-use App\Mail\ContactSendmail;
+// use App\Http\Requests\ContactRepository;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
@@ -12,16 +12,29 @@ class ContactController extends Controller
   {
     return view('contact.index');
   }
-  public function confirm(ContactFormRequest $request)
+  public function confirm(Request $request)
+  // {
+  //   // バリデーションのメソッドを作る。
+  //   $request->validate([
+      'body' => 'required',
+      'email' =>'required',
+  //     // 'email' => 'required|regex:/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$/',
+  //     // requiredは必須の意味。
+  //   ]);
+  //   $data = $request->only(['email','body']);
+  //   return view('contact.confirm',$data);
+  // }
+
+  public function send(Request $request)
   {
-    $contact = $request->all();
-    return view('contact.confirm,compact'('contact'));
+    $attributes = $request->only(['email','body']);
+    Contact::create($attributes);
+    $data = $request->only(['email']);
+    return view('contact.thanks',$data);
   }
-  public function send(ContactFormRequest $request)
-  {
-    $contact = $request->all();
-    \Mail::to('your_address@example.com')->send(new ContactSendmail($contact));
-    $request->session()->regenerateToken();
-    return view('contact.thanks');
-  }
+  // protected $contact_repository;
+  // public function __construct(ContactRepository$contact_repository)
+  // {
+  //   $this->contact_repository = $contact_repository;
+  // }
 }
