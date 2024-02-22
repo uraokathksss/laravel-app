@@ -1,0 +1,36 @@
+.information ul li time {
+  display: inline-block;
+  min-width: 145px;
+  padding: 5px 0;
+  margin: 5px 0;
+  text-align: center;
+}
+
+
+.information ul li p {
+  display: inline-block;
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+
+
+.information__title--category1 span {
+  background: #8fc93a;
+}
+
+.information__title--category2 span {
+  background: #392f5a;
+}
+
+.information-detail__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.information-detail__header time {
+  line-height: 20px;
+  color: #aaa;
+}

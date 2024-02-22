@@ -15,9 +15,11 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::get('/', function () {return view('welcome');});
-
+//お問い合わせフォーム//
 Route::get('contact',[ContactController::class,'index'])->name('contact.index');
 //確認ページ//
 Route::post('contact/confirm',[ContactController::class,'confirm'])->name('contact.confirm'); 
 //送信完了ページ//
 Route::post('contact/thanks',[ContactController::class,'send'])->name('contact.send');
+//管理画面//
+Route::get('contact/list', [ContactController::class, 'list'])->name('contact.list');

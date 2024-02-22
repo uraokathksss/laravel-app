@@ -8,12 +8,14 @@
   <form method="POST" action="{{route('contact.confirm')}}">
     @csrf
     <h2>メールアドレスを入力してください</h2>
-    <div class="form_input">
-      メールアドレス
-      <span>必須</span>
-    </div>
-    <div class="form_input">
-      <input type="email" name="email" value="{{old('email')}}"required>
+    <div class="form">
+      <div class="form_input">
+        メールアドレス
+        <span>必須</span>
+      </div>
+      <div class="form_input">
+        <input type="email" name="email" value="{{old('email')}}"required>
+      </div>
     </div>
     <h2>お問い合わせ内容を入力してください</h2>
     <div class="form">
@@ -29,4 +31,7 @@
       <input type=submit value="入力内容を確認する">
     </div>
   </form>
+  @foreach($errors->all() as $error)
+  <li>{{$error}}</li>
+  @endforeach
 </div>
