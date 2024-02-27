@@ -1,8 +1,9 @@
-.information ul li time {
-  display: inline-block;
-  min-width: 145px;
-  padding: 5px 0;
-  margin: 5px 0;
+@charset "UTF-8";
+
+.fixed_btn-2 {
+  width: 200px;
+  /* display: inline-block; */
+  margin: 0 auto;
   text-align: center;
 }
 

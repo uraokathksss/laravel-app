@@ -12,6 +12,7 @@ class ContactController extends Controller
   {
     return view('contact.index');
   }
+
   public function confirm(Request $request)
   {
     // バリデーションのメソッドを作る。
@@ -42,6 +43,20 @@ class ContactController extends Controller
   {
   $contact_list = $this->contact_repository->getContactList();
   return view('contact.list',['contact_list'=>$contact_list]);
+  }
+
+  public function detail($id)
+  {
+    $contact=Contact::find($id);
+    return view('contact.detail',['contact'=>$contact]);
+  }
+
+  public function delete($id)
+  {
+    $contact=Contact::find($id);
+    $contact->delete();
+    $contact_list = $this->contact_repository->getContactList();
+    return redirect(route('contact.list',['contact_list'=>$contact_list]));
   }
 }
 

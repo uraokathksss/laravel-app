@@ -8,7 +8,7 @@ class ContactRepository
 {
   public function getContactList()
   {
-    $contact = Contact::all();
-    return $contact;
+    $contacts = Contact::all();
+    return $contacts;
   }
 }

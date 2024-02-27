@@ -1,0 +1,7 @@
+@import url('./inc_index.css');
+@import url('./style.css') screen, print;
+@import url('./style_pc.css') screen and (min-width: 961px), print;
+@import url('./style_sp.css') screen and (max-width: 960px);
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';

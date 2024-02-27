@@ -1,3 +1,7 @@
+@extends('layouts.body')
+
+@section('content')
+
 <div class="contact">
   <h1>お問い合わせフォーム</h1>
   <div class="step">
@@ -17,6 +21,7 @@
         <input type="email" name="email" value="{{old('email')}}"required>
       </div>
     </div>
+
     <h2>お問い合わせ内容を入力してください</h2>
     <div class="form">
       <div class="form_title">
@@ -35,3 +40,4 @@
   <li>{{$error}}</li>
   @endforeach
 </div>
+@endsection

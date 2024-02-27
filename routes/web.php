@@ -23,3 +23,7 @@ Route::post('contact/confirm',[ContactController::class,'confirm'])->name('conta
 Route::post('contact/thanks',[ContactController::class,'send'])->name('contact.send');
 //管理画面//
 Route::get('contact/list', [ContactController::class, 'list'])->name('contact.list');
+//詳細ページ//
+Route::get('contact/detail/{id}/', [ContactController::class, 'detail'])->name('contact.detail');
+//削除機能//
+Route::get('contact/delete/{id}/', [ContactController::class, 'delete'])->name('contact.delete');
