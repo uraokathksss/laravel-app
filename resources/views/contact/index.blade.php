@@ -39,5 +39,8 @@
   @foreach($errors->all() as $error)
   <li>{{$error}}</li>
   @endforeach
+  <div class="link">
+    <a href="{{ Auth::check() ?route('contact.list') : route('login') }}"><button>確認一覧画面</button></a>
+  </div>
 </div>
 @endsection
