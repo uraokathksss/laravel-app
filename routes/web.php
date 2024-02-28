@@ -32,7 +32,7 @@ Route::get('contact/detail/{id}/', [ContactController::class, 'detail'])->name('
 //削除機能//
 Route::get('contact/delete/{id}/', [ContactController::class, 'delete'])->name('contact.delete');
 
-
+//ログイン機能//
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

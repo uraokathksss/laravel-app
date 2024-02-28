@@ -1,3 +1,7 @@
+@extends('layouts.body')
+
+@section('content')
+
 <div class="contact">
   <h1>お問い合わせフォーム</h1>
   <div class="step">
@@ -14,3 +18,4 @@
     <a href="{{route('contact.index')}}">TOPに戻る</a>
   </div>
 </div>
+@endsection

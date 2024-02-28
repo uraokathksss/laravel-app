@@ -1,3 +1,8 @@
+@extends('layouts.body')
+
+@section('content')
+
+
 <div class="contact">
   <h1>お問い合わせフォーム</h1>
   <div class="step">
@@ -7,11 +12,12 @@
   </div>
   <form method="POST" action="{{ route('contact.send')}}">
     @csrf
+    <h2>メールアドレスを確認してください</h2>
     <div class="form">
       <div class="form_input">
         メールアドレス
       </div>
-      <div class="form_input">
+      <div class="form_input with_border">
         <input type="hidden" name="email" value="{{$email}}">
         {{ $email }}
       </div>
@@ -21,7 +27,7 @@
       <div class="form_title">
         お問い合わせ内容
       </div>
-      <div class="form_input">
+      <div class="form_input with_border">
         <input type="hidden" name="body" value="{{$body}}">
         {{$body}}
       </div>
@@ -31,3 +37,4 @@
     </div>
   </form>
 </div>
+@endsection

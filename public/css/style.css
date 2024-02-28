@@ -1,31 +1,22 @@
 @charset "UTF-8";
 
-.contact {
-  width: 200px;
-  /* display: inline-block; */
-  margin: 0 auto;
+h1 {
   text-align: center;
-  color: #1dd68f;
 }
 
 
-.information ul li p {
-  display: inline-block;
+.step {
+  display: 10px;
   padding: 5px 0;
   margin: 5px 0;
+  color: rgb(90, 75, 223);
 }
 
-
-
-.information__title--category1 span {
-  background: #8fc93a;
+.required {
+  color: red;
 }
 
-.information__title--category2 span {
-  background: #392f5a;
-}
-
-.information-detail__header {
+.contact {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,4 +26,8 @@
 .information-detail__header time {
   line-height: 20px;
   color: #aaa;
+}
+
+.with_border {
+  border-bottom: 1px solid black; /* 下線のスタイルを指定します */
 }
