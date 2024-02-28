@@ -4,23 +4,34 @@ h1 {
   text-align: center;
 }
 
-
 .step {
-  display: 10px;
-  padding: 5px 0;
-  margin: 5px 0;
-  color: rgb(90, 75, 223);
+  display: flex;
+  justify-content: space-around;
+  margin: 0 15%;
+}
+
+.step .step_bar {
+  width: 220px;
+  padding: 20px 20px;
+  margin: 10px 10px;
+  text-align: center;
+  background-color: RGBA(15, 130, 153, 0.5);
+  color: rgb(74, 10, 222);
+}
+
+.step .current {
+  font-weight: bold;
+  color: #f8f2f2;
+  background-color: rgb(29, 29, 154);
 }
 
 .required {
   color: red;
 }
 
-.contact {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
+.contact h1 {
+  padding: auto;
+  background-color: yellow;
 }
 
 .information-detail__header time {
