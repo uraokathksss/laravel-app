@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+h1 {
+  text-align: center;
+}
+
+
+.step {
+  display: 10px;
+  padding: 5px 0;
+  margin: 5px 0;
+  color: rgb(90, 75, 223);
+}
+
+.required {
+  color: red;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.information-detail__header time {
+  line-height: 20px;
+  color: #aaa;
+}
+
+.with_border {
+  border-bottom: 1px solid black; /* 下線のスタイルを指定します */
+}
