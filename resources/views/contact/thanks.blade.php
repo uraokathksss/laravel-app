@@ -17,5 +17,8 @@
   <div class="link">
     <a href="{{route('contact.index')}}">TOPに戻る</a>
   </div>
+  <div class="link">
+    <img src="{{ asset($post->image)}}" width="100px">
+  </div>
 </div>
 @endsection

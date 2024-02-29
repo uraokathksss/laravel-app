@@ -43,7 +43,6 @@
     <a href="{{ Auth::check() ?route('contact.list') : route('login') }}"><button>確認一覧画面</button></a>
   </div>
 </div>
-<div>
-  <input id="image" type="file" name="image">
-</div>
+<input id="image" type="file" name="image">
+  {{-- <img src="{{ Storage::url($post->image)}}" width="100px"> --}}
 @endsection

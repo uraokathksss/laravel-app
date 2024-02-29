@@ -21,16 +21,17 @@ class ContactController extends Controller
       'email' =>'required',
      // requiredは必須の意味。
     ]);
-    $data = $request->only(['email','body']);
+    $data = $request->only(['email','body','image']);
     return view('contact.confirm',$data);
   }
 
   public function send(Request $request)
   {
     $attributes = $request->only(['email','body']);
-    Contact::create($attributes);
+    $contact=Contact::create($post);
     $data = $request->only(['email']);
-    return view('contact.thanks',$data);
+    $post = Contact::all();
+    return view('contact.thanks',$data,);
   }
 
   protected $contact_repository;
@@ -57,6 +58,28 @@ class ContactController extends Controller
     $contact->delete();
     $contact_list = $this->contact_repository->getContactList();
     return redirect(route('contact.list',['contact_list'=>$contact_list]));
+  }
+
+  public function store(Request $request)
+  {
+    // 新規postを作成
+    $post=new Post();
+    
+    // バリデーションルール
+    $inputs=request()->validate([
+    'title'=>'required|max:255',
+    'body'=>'required|max:255',
+    'image'=>'image'
+    ]);
+    
+    // 画像ファイルの保存場所指定
+    if(request('image')){
+    $filename=request()->file('image')->getClientOriginalName();
+    $inputs['image']=request('image')->storeAs('public/images', $filename);
+    }
+    
+    // postを保存
+    $post->create($inputs);
   }
 }
 

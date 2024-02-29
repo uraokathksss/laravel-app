@@ -43,4 +43,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//画像表示//
+// Route::get('/images', [ImageController:: class,'index']); ->name('contact.index');
 require __DIR__.'/auth.php';

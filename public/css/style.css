@@ -6,21 +6,52 @@ h1 {
 
 
 .step {
-  display: 10px;
-  padding: 5px 0;
-  margin: 5px 0;
-  color: rgb(90, 75, 223);
+  display: flex;
+  justify-content: space-around;
+  margin: 0 15%;
 }
 
+.step .step_bar {
+  width: 220px;
+  padding: 20px 20px;
+  margin: 10px 10px;
+  text-align: center;
+  background-color: RGBA(15, 130, 153, 0.5);
+}
+
+.step .current {
+  font-weight: bold;
+  color: #118a41;
+  background-color: yellow;
+}
 .required {
   color: red;
 }
 
 .contact {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
+  padding-top: 10px;
+}
+
+.contact h1 {
+  padding: 0 15%;
+  background-color: blue;
+  color: #f3e8e8;
+}
+
+.contact h2 {
+  padding-left: 10px;
+  margin: 10px 15%;
+  border-left: 8px solid #bca3e6;
+}
+
+contact .link {
+  margin: 10px 15%;
+  text-align: center;
+}
+
+.step .complete {
+  color: #fff;
+  background-color: #6d6262;
 }
 
 .information-detail__header time {
