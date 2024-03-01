@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\ContactRepository;
 use App\Models\Contact;
+use App\Image;
 
 class ContactController extends Controller
 {
@@ -15,6 +16,7 @@ class ContactController extends Controller
 
   public function confirm(Request $request)
   {
+
     // バリデーションのメソッドを作る。
     $request->validate([
       'body' => 'required',
@@ -22,15 +24,18 @@ class ContactController extends Controller
      // requiredは必須の意味。
     ]);
     $data = $request->only(['email','body','image']);
+    $image = $request->file('image');
+    $image->storeAs('public/', 'test.jpg');
+    $image = Image::create([
+      'image' => $image,
+    ]);
     return view('contact.confirm',$data);
   }
 
   public function send(Request $request)
   {
-    $attributes = $request->only(['email','body']);
-    $contact=Contact::create($post);
+    $attributes = $request->only(['email','body','image']);
     $data = $request->only(['email']);
-    $post = Contact::all();
     return view('contact.thanks',$data,);
   }
 
@@ -58,28 +63,6 @@ class ContactController extends Controller
     $contact->delete();
     $contact_list = $this->contact_repository->getContactList();
     return redirect(route('contact.list',['contact_list'=>$contact_list]));
-  }
-
-  public function store(Request $request)
-  {
-    // 新規postを作成
-    $post=new Post();
-    
-    // バリデーションルール
-    $inputs=request()->validate([
-    'title'=>'required|max:255',
-    'body'=>'required|max:255',
-    'image'=>'image'
-    ]);
-    
-    // 画像ファイルの保存場所指定
-    if(request('image')){
-    $filename=request()->file('image')->getClientOriginalName();
-    $inputs['image']=request('image')->storeAs('public/images', $filename);
-    }
-    
-    // postを保存
-    $post->create($inputs);
   }
 }
 

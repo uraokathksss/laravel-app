@@ -35,6 +35,7 @@
     <div class="submit">
       <input type=submit value="入力内容を送信する">
     </div>
+    <img src="{{ asset('public/cat3.jpg') }}" >
   </form>
 </div>
 @endsection

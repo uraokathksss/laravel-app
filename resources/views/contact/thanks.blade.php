@@ -1,7 +1,7 @@
 @extends('layouts.body')
 
 @section('content')
-
+<form action=""></form>
 <div class="contact">
   <h1>お問い合わせフォーム</h1>
   <div class="step">
@@ -18,7 +18,7 @@
     <a href="{{route('contact.index')}}">TOPに戻る</a>
   </div>
   <div class="link">
-    <img src="{{ asset($post->image)}}" width="100px">
+    <img src="/images/image" width="100px">
   </div>
 </div>
 @endsection

@@ -9,7 +9,7 @@
     <div class="step_bar">確認画面</div>
     <div class="step_bar">送信完了</div>
   </div>
-  <form method="POST" action="{{route('contact.confirm')}}">
+  <form method="POST" action="{{route('contact.confirm')}}" enctype="multipart/form-data">
     @csrf
     <h2>メールアドレスを入力してください</h2>
     <div class="form">
@@ -32,8 +32,9 @@
         <textarea name="body" required></textarea>
       </div>
     </div>
+    <input id="image" type="file" name="image">
     <div class="submit">
-      <input type=submit value="入力内容を確認する">
+      <input type="submit" value="入力内容を確認する">
     </div>
   </form>
   @foreach($errors->all() as $error)
@@ -43,6 +44,4 @@
     <a href="{{ Auth::check() ?route('contact.list') : route('login') }}"><button>確認一覧画面</button></a>
   </div>
 </div>
-<input id="image" type="file" name="image">
-  {{-- <img src="{{ Storage::url($post->image)}}" width="100px"> --}}
 @endsection
