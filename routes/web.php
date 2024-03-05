@@ -44,5 +44,6 @@ Route::middleware('auth')->group(function () {
 });
 
 //画像表示//
-// Route::get('/images', [ImageController:: class,'index']); ->name('contact.index');
+// Route::get('/image_upload', 'App\Http\Controllers\ImageUploadController@index');
+// Route::POST('/image_upload', [ImageController:: class,'upload']); ->name('image.upload');
 require __DIR__.'/auth.php';
