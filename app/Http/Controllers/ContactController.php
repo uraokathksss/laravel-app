@@ -25,7 +25,13 @@ class ContactController extends Controller
      // requiredは必須の意味。
     ]);
     $data = $request->only(['email','body','image']);
-    $image = $request->file('image');
+    $image = $request->file('image')
+
+    // $image_path = str_replace('public/tmp/', '', $image_path);
+    // $image = new Image;
+    // $image->file = $image;
+    // $image->save();
+
     if ($image) {
       // 拡張子の取得
       $extension = $image->getClientOriginalExtension();
@@ -38,6 +44,7 @@ class ContactController extends Controller
           'public/tmp', $request->file('image'), $new_name
       );
       dump($image_path);
+      $image_path = Storage::url($image_path);
     }else {
       $new_name = 'noimage.jpg';
       $extension = '0';
