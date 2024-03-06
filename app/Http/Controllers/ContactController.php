@@ -35,8 +35,9 @@ class ContactController extends Controller
 
       // 一時的にtmpフォルダに保存する
       $image_path = Storage::putFileAs(
-          'tmp', $request->file('image'), $new_name
+          'public/tmp', $request->file('image'), $new_name
       );
+      dump($image_path);
     }else {
       $new_name = 'noimage.jpg';
       $extension = '0';
@@ -88,6 +89,7 @@ class ContactController extends Controller
   }
 
   protected $contact_repository;
+
   public function __construct(ContactRepository $contact_repository)
   {
     $this->contact_repository = $contact_repository;
