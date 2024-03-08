@@ -25,7 +25,7 @@
   </div>
   <div class="information-detail__text">
     <p>添付画像</p>
-    <img src="{{$contact->image}}" alt="">
+    <img src="{{$contact->image}}" alt="" width="100%">
   </div>
   <div class="information-detail__button">
     <ul><a href="{{route('contact.delete',$contact->id)}}">削除</a></ul>

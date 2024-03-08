@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\ContactRepository;
 use App\Models\Contact;
-use App\Image;
 use Illuminate\Support\Facades\Storage;
 
 class ContactController extends Controller
@@ -50,10 +49,15 @@ class ContactController extends Controller
   {
     // データベースにデータを保存
     $data = $request->only(['email','body','image']);
+
+    // 画像が送信された場合のみ処理を行う
+    if ($request->has('image')) {
+      $data['image'] = str_replace('/storage/','',$data['image']);
+    }
     Contact::create([
       'email' => $data['email'],
       'body' => $data['body'],
-      'image' => $data['image'],
+      'image' => isset($data['image']) ? $data['image'] : null,
     ]);
 
     return view('contact.thanks', $data);

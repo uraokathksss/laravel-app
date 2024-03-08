@@ -32,11 +32,15 @@
         {{$body}}
       </div>
     </div>
+    @if($image)
+    <input type="hidden" name="image" value="{{ $image }}">
+    <img src="{{ $image }}" class='image'/>
+    @else
+    <p>画像はありません。</p>
+    @endif
     <div class="submit">
       <input type=submit value="入力内容を送信する">
     </div>
-    <img src="{{ $image }}"/>
-    <input type="hidden" name="image" value="{{ $image }}">
   </form>
 </div>
 @endsection

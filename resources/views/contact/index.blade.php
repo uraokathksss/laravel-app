@@ -32,7 +32,9 @@
         <textarea name="body" required></textarea>
       </div>
     </div>
-    <input id="image" type="file" name="image">
+    <div class="image_a">
+      <input id="image" type="file" name="image">
+    </div>
     <div class="submit">
       <input type="submit" value="入力内容を確認する">
     </div>
