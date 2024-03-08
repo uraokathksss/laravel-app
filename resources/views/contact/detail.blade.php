@@ -21,7 +21,12 @@
   </div>
   <div class="information-detail__text">
     <p>お問い合わせ内容</p>
-    {{$contact->body}}</div>
+    {{$contact->body}}
+  </div>
+  <div class="information-detail__text">
+    <p>添付画像</p>
+    <img src="{{$contact->image}}" alt="">
+  </div>
   <div class="information-detail__button">
     <ul><a href="{{route('contact.delete',$contact->id)}}">削除</a></ul>
   </div>

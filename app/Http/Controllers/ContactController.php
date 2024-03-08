@@ -19,94 +19,45 @@ class ContactController extends Controller
   {
 
     // バリデーションのメソッドを作る。
+    // requiredは必須の意味。
     $request->validate([
       'body' => 'required',
       'email' =>'required',
-     // requiredは必須の意味。
+      'image' =>'nullable|image',
     ]);
-    $data = $request->only(['email','body','image']);
-    // dump($data);
-    $image = $request->file('image');
+    $data = $request->only(['email','body']);
 
+    $image = $request->file('image');
     if ($image) {
       // 拡張子の取得
-      $extension = $image->getClientOriginalExtension();
+      $image_extension = $image->getClientOriginalExtension();
 
       // 新しいファイル名を作る（ランダムな文字数とする）
-      $new_name = uniqid() . "." . $extension;
+      $image_name = uniqid() . "." . $image_extension;
 
-      // 一時的にtmpフォルダに保存する
-      $image_path = Storage::putFileAs(
-          'public', $request->file('image'), $new_name
-      );
-      // dump($image_path);
-      $image_path = Storage::url($image_path);
-    }else {
-      $new_name = 'noimage.jpg';
-      $extension = '0';
-      $image_path = 'noimage.jpg';
+      $image_path = Storage::putFileAs('public', $request->file('image'), $image_name);
+
+      $image_url = Storage::url($image_path);
+
+      $data['image'] = $image_url;
+    } else {
+      $data['image'] = null;
     } 
-    return view('contact.confirm',$data,compact('image_path','extension'));
+    return view('contact.confirm', $data);
   }
 
   public function send(Request $request)
   {
-
-    $data = $request->only(['email','body','image_path']);
-    dump($data);
-
     // データベースにデータを保存
-    Contact::create($data);
+    $data = $request->only(['email','body','image']);
+    Contact::create([
+      'email' => $data['email'],
+      'body' => $data['body'],
+      'image' => $data['image'],
+    ]);
+
     return view('contact.thanks', $data);
   }
-
-
-
-
-
-  // public function send(Request $request)
-  // {
-  //   $attributes = $request->only(['email','body','image']);
-  //   $data = $request->only(['email','body','image']);
-
-  //   dump($data);
-  //   Contact::create($attributes);
-  //   return view('contact.thanks',$data,);
-
-
-  //   DB::beginTransaction();
-  //   $data = profile::create([  
-  //         "name" => $request->name,  
-  //       "extension" => $request->extension,  
-  //   ]);
-  //   DB::commit();
-
-  //   // 新しいファイル名を作る
-  //   // この場合、IDをファイル名にしている↓
-  //   $new_name = $data->id . '.' . $request->extension;
-
-  //   if($request->image_path == 'noimage.jpg'){
-  //       // ノーイメージ画像をコピーして、ユーザー毎の画像を用意する場合はこのコード↓
-  //       // Storage::copy($request->image_path, 'img/'.$new_name);
-
-  //       // 後々、Webサイトの改装時にノーイメージ画像を変更したい場合があるので、
-  //       // 各ユーザー毎にノーイメージ画像を量産すると地獄を見るのでおすすめできません
-  //       // 今回の場合、DBの「拡張子」カラムに「0」が登録されるように作ったので、
-  //       // 拡張子が0ならノーイメージ画像を表示判定ができる仕様にしてみました
-  //   } else {
-  //       // 一時保存のtmpから本番の格納場所imgへ移動
-  //       Storage::move($request->image_path, 'img/'.$new_name);
-  //   }
-
-  //   return view('image_upload_complete');
-
-  //   //  catch (\Exception $e) {
-  //   //   DB::rollback();
-  //   //   Log::error($e);
-  //   //   print_r('エラーが発生しました。');
-  //   //   exit;
-  //   // }
-  // }
 
   protected $contact_repository;
 

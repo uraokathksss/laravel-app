@@ -35,9 +35,8 @@
     <div class="submit">
       <input type=submit value="入力内容を送信する">
     </div>
-    <img src="{{ $image_path }}" alt="Uploaded Image" />
-    <input type="hidden" name="image_path" value="{{ $image_path }}">
-    <input type="hidden" name="extension" value="{{ $extension }}">
+    <img src="{{ $image }}"/>
+    <input type="hidden" name="image" value="{{ $image }}">
   </form>
 </div>
 @endsection
